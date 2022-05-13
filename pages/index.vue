@@ -20,6 +20,13 @@ export default Vue.extend({
     this.axiosToken = this.$axios.CancelToken.source();
 
     console.log(this.axiosToken)
+    /// Something axios communication use cancel token
+  },
+
+  beforeDestroy() {
+    if(this.axiosToken?.cancel) {
+      this.axiosToken.cancel();
+    }
   }
 })
 </script>
